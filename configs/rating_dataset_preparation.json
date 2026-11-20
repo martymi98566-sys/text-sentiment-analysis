@@ -1,0 +1,55 @@
+{
+  "purpose": "Full rating recovery with deterministic cleaning; retain original split membership and row order.",
+  "cleaning_policy_version": 1,
+  "archive": {
+    "path": "data/raw/aclImdb_v1.tar.gz",
+    "bytes": 84125825,
+    "sha256": "c40f74a18d3b61f90feba1e17730e0d38e8b97c05fde7008942e91923d1658fe",
+    "original_url": "https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz",
+    "checksum_reference": "https://raw.githubusercontent.com/tensorflow/datasets/master/tensorflow_datasets/datasets/imdb_reviews/checksums.tsv"
+  },
+  "splits": {
+    "train": {
+      "path": "data/cleaned/train.csv",
+      "source_split": "train",
+      "sha256": "2358699a3a54b8e5861fec005c472b48ede0bdc5d5e7bf9c6cd8bb52c0b1d337"
+    },
+    "validation": {
+      "path": "data/cleaned/val.csv",
+      "source_split": "train",
+      "sha256": "94200608eb6a2318bddd74584d5a525defc96915ac84ad0cb95cc7ce846bb0e8"
+    },
+    "test": {
+      "path": "data/cleaned/test.csv",
+      "source_split": "test",
+      "sha256": "7bd5415632704fc7224d44760862729330d3b44b4b2f7893dcba485761bff026"
+    }
+  },
+  "duplicate_keep_priority": [
+    "train",
+    "validation",
+    "test"
+  ],
+  "minimum_retention_per_split": 0.98,
+  "text_cleaning": [
+    "Map defined Windows-1252 C1 characters to their printable Unicode counterparts.",
+    "Remove zero-width space U+200B and BOM U+FEFF; strip outer whitespace.",
+    "Reject missing, blank, replacement-character, undefined-control, nonletter-only and oversized text."
+  ],
+  "duplicate_identity": "SHA-256 of NFKC + casefold + collapsed Unicode whitespace after text cleaning; body case is preserved.",
+  "ambiguity_policy": "Reject source-wide normalized rating/label conflicts and unmatched rows; never infer ratings.",
+  "outputs": {
+    "datasets": {
+      "train": "data/ratings_cleaned/train.csv",
+      "validation": "data/ratings_cleaned/val.csv",
+      "test": "data/ratings_cleaned/test.csv"
+    },
+    "audit": "data/ratings_audit/all_rows.csv",
+    "dropped": "data/ratings_audit/dropped_rows.csv",
+    "source_conflicts": "data/ratings_audit/source_conflict_groups.csv",
+    "summary": "reports/tables/rating_dataset_summary.csv",
+    "reasons": "reports/tables/rating_dataset_cleaning_reasons.csv",
+    "rating_distribution": "reports/tables/rating_dataset_rating_distribution.csv",
+    "metadata": "reports/tables/rating_dataset_metadata.json"
+  }
+}

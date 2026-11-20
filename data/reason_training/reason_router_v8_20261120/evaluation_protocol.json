@@ -1,0 +1,15 @@
+{
+  "fingerprints": {
+    "src/sentiment_analysis/reason_router_v8.py": "4f2de1dd4dc2ef9b3415d0b147ae1dc869514a551a7944f5c58b336bed7a7098",
+    "src/sentiment_analysis/reason_semantic_router_v5.py": "f2cbb8e4e9c5833eb460dab2473e88b3c5bba5a80469598553f863aa05f06b15",
+    "src/sentiment_analysis/reason_consensus_v6.py": "f7fdbdd502c373dc39f19a02c5511f43c272945203c6db870f5059e17e516722",
+    "src/sentiment_analysis/reason_natural_backfill.py": "bc779ac04a31d067f3596a6e38291518eb490168abcd4bad40ba8756e644dff5",
+    "data/pretrained/reason_router_3b/download_manifest.json": "552ad7eb3320f9bdd843b2178b6bd4ebd2aac5ba95d0b678b96038c291571946",
+    "data/reason_training/target_fragments_v3_20261120/training_complete.json": "c100bb377916d2cc36930e90060a0097389b396f9e6121dbe5b68d0a698d3d59"
+  },
+  "policy_sha256": "7d680aa0c3720288f9880097a80f660fad4ecb6feb81a0f99575dd462e5f95ee",
+  "previous_natural_12_review_audit_now_exposed_development": true,
+  "requires_new_final_review_group": true,
+  "final_gate": "F1 >= baseline+0.05; precision >= max(0.80, baseline-0.02); no-reason errors<=baseline+1 and <=10%; fixed F1 no worse and fixed real precision>=0.90, fixed none errors<=baseline+1",
+  "human_ground_truth": false
+}

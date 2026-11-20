@@ -1,0 +1,23 @@
+{
+  "epochs": 4,
+  "best_epoch": {
+    "epoch": 2,
+    "development_loss": 0.6147237196564674
+  },
+  "thresholds": {
+    "category_threshold": 0.7,
+    "gate_threshold": 0.975,
+    "masked_precision": 0.8571428571428571,
+    "masked_recall": 0.18181818181818182,
+    "masked_f1": 0.3,
+    "explicit_none_false_positive_rate": 0.023809523809523808,
+    "explicit_none_samples": 42,
+    "criteria_met": true,
+    "scope": "Known-mask development agreement; absence was not converted into negative labels"
+  },
+  "encoder_sha256": "a4da625859261f9f7106999c3fba4d598ae88f97d47d09fe40954dc707f24382",
+  "heads_sha256": "861a07d83ea4af66316a4502bf5f88433167fd57cb9f12cb3d3a47331e3b2402",
+  "benchmark_used_for_training_or_selection": false,
+  "serving_changed": false,
+  "human_ground_truth": false
+}

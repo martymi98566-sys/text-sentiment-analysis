@@ -1,0 +1,27 @@
+{
+  "label_names": [
+    "plot:positive",
+    "plot:negative",
+    "pacing:positive",
+    "pacing:negative",
+    "acting:positive",
+    "acting:negative",
+    "characters:positive",
+    "characters:negative",
+    "dialogue:positive",
+    "dialogue:negative",
+    "visuals:positive",
+    "visuals:negative",
+    "sound:positive",
+    "sound:negative",
+    "emotion:positive",
+    "emotion:negative",
+    "theme:positive",
+    "theme:negative",
+    "adaptation:positive",
+    "adaptation:negative",
+    "other:positive",
+    "other:negative"
+  ],
+  "scope": "Runtime label ordering only; annotation corpus omitted"
+}

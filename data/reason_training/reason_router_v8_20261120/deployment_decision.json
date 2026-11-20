@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "candidate": "local_contrastive_reason_v8",
+  "serving_changed": false,
+  "human_ground_truth": false
+}

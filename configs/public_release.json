@@ -1,0 +1,17 @@
+{
+  "version": "v0.2.0-research",
+  "date": "2026-11-20",
+  "upstream": "https://github.com/IvoryGate/text-sentiment-analysis",
+  "parent_commit": "189647627164e87396706ebf692deec40322d463",
+  "human_ground_truth": false,
+  "release_tier": "local_research_trial",
+  "formal_acceptance_passed": false,
+  "packaging_only_changes": [
+    "portable launcher",
+    "runtime integrity manifest replacing historical experiment dependencies",
+    "extracted serving guard",
+    "model asset installer",
+    "documentation"
+  ],
+  "prediction_models_policy_prompts_unchanged": true
+}

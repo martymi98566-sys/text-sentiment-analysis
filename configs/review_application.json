@@ -1,0 +1,154 @@
+{
+  "version": 2,
+  "classification_weights": [
+    0.2,
+    0.3,
+    0.5
+  ],
+  "reason_threshold": 0.75,
+  "categories": [
+    {
+      "id": "plot",
+      "name": "剧情与逻辑",
+      "aspect": "the plot, story coherence or storytelling",
+      "positive": [
+        "The plot is coherent and makes sense.",
+        "The story is original and full of clever surprises."
+      ],
+      "negative": [
+        "The plot has enormous logical holes.",
+        "The story is predictable and full of unresolved loose ends."
+      ]
+    },
+    {
+      "id": "pacing",
+      "name": "节奏与剪辑",
+      "aspect": "pacing, editing or transitions",
+      "positive": [
+        "The pacing is brisk and the transitions are smooth.",
+        "The editing maintains an effective rhythm."
+      ],
+      "negative": [
+        "The pacing is painfully slow and scenes drag on.",
+        "The editing is confusing and the cuts are abrupt."
+      ]
+    },
+    {
+      "id": "acting",
+      "name": "演员表演与选角",
+      "aspect": "acting performances or casting",
+      "positive": [
+        "The actors deliver convincing and natural performances.",
+        "The lead actor is perfectly cast and deeply moving."
+      ],
+      "negative": [
+        "The acting is wooden and unconvincing.",
+        "The lead actor is badly miscast and overacts every scene."
+      ]
+    },
+    {
+      "id": "characters",
+      "name": "人物塑造",
+      "aspect": "character development, relationships or motivations",
+      "positive": [
+        "The characters are complex with believable motivations.",
+        "The protagonist grows in a convincing way."
+      ],
+      "negative": [
+        "The characters are flat and their motives make no sense.",
+        "The relationships are underdeveloped and the protagonist never grows."
+      ]
+    },
+    {
+      "id": "dialogue",
+      "name": "对白与台词",
+      "aspect": "dialogue or lines of speech",
+      "positive": [
+        "The dialogue is sharp and sounds natural.",
+        "The conversations reveal important details without excessive exposition."
+      ],
+      "negative": [
+        "The dialogue is awkward and painfully artificial.",
+        "The conversations are repetitive and full of clumsy exposition."
+      ]
+    },
+    {
+      "id": "visuals",
+      "name": "画面与制作",
+      "aspect": "cinematography, visual effects, sets or costumes",
+      "positive": [
+        "The cinematography is beautiful and the effects are convincing.",
+        "The sets and costumes are detailed and appropriate."
+      ],
+      "negative": [
+        "The special effects look cheap and fake.",
+        "The cinematography is dull and the sets look flimsy."
+      ]
+    },
+    {
+      "id": "sound",
+      "name": "配乐与声音",
+      "aspect": "music, soundtrack, sound effects or audio clarity",
+      "positive": [
+        "The soundtrack fits each scene and the dialogue is clearly audible.",
+        "The music is memorable and supports the drama."
+      ],
+      "negative": [
+        "The music is repetitive and drowns out the dialogue.",
+        "The sound effects are distorted and distracting."
+      ]
+    },
+    {
+      "id": "emotion",
+      "name": "情绪与类型效果",
+      "aspect": "emotional impact, humor, suspense or frightening atmosphere",
+      "positive": [
+        "The jokes made me laugh and the suspense kept me on edge.",
+        "The emotional scenes moved me to tears and the horror was genuinely frightening."
+      ],
+      "negative": [
+        "The jokes are painfully unfunny and the scares never work.",
+        "The emotional scenes feel forced and there is no suspense."
+      ]
+    },
+    {
+      "id": "theme",
+      "name": "主题与表达",
+      "aspect": "themes, ideas, message or depth",
+      "positive": [
+        "The themes are thoughtful and the message is clear.",
+        "The ideas offer real depth and leave room for reflection."
+      ],
+      "negative": [
+        "The message is shallow and excessively preachy.",
+        "The themes are muddled and the ideas lack depth."
+      ]
+    },
+    {
+      "id": "adaptation",
+      "name": "改编与原作",
+      "aspect": "adaptation of an original book or other source material",
+      "positive": [
+        "The adaptation captures the spirit of the original novel.",
+        "The changes from the book are thoughtful and effective."
+      ],
+      "negative": [
+        "The adaptation destroys the original novel's spirit.",
+        "The changes from the book remove its most important scenes."
+      ]
+    },
+    {
+      "id": "other",
+      "name": "其他",
+      "aspect": "a concrete viewing issue outside story, pacing, acting, characters, dialogue, visuals, audio, emotional impact, themes and adaptation",
+      "positive": [
+        "The subtitles are accurate and easy to read.",
+        "The DVD includes an informative commentary track."
+      ],
+      "negative": [
+        "The subtitles are inaccurate and unreadable.",
+        "The disc repeatedly freezes during playback."
+      ]
+    }
+  ]
+}

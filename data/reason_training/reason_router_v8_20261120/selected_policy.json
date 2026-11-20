@@ -1,0 +1,7 @@
+{
+  "name": "local_contrastive_reason_v8",
+  "learned_veto": 0.5,
+  "semantic_min": 0.25,
+  "mode": "union",
+  "development_eligible": true
+}

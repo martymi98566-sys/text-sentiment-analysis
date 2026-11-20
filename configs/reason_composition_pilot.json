@@ -1,0 +1,17 @@
+{
+  "version": "weighted_reason_pilot_v1_20261120",
+  "input_file": "data/reason_composition/pilot_20261120/inputs.json",
+  "reference_file": "data/reason_composition/pilot_20261120/reference.json",
+  "output_dir": "data/reason_composition/pilot_20261120/run_v1",
+  "nli_min": 0.8,
+  "joint_min": 0.5,
+  "joint_mass_min": 0.5,
+  "choice_mass_min": 0.35,
+  "polarity_choice_min": 0.55,
+  "polarity_margin_min": 0.1,
+  "intensity_weights": {"mild": 1.0, "ordinary": 1.5, "strong": 2.0},
+  "category_cap": null,
+  "sentence_specific_min": 0.4,
+  "evidence_cap_per_category": null,
+  "scope": "Development prototype. Percentages normalize supported evidence word credits times estimated tone weights; not emotional probability or model accuracy."
+}

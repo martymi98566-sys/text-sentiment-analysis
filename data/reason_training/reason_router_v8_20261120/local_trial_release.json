@@ -1,0 +1,18 @@
+{
+  "local_trial_approved": true,
+  "decision_type": "post-evaluation engineering review; NOT predeclared formal acceptance",
+  "predeclared_formal_acceptance_passed": false,
+  "precision_goal": 0.8,
+  "observed_new_group_precision": 0.7272727272727273,
+  "basis": "All precision, recall and F1 improve over the current local version; no additional no-reason false positives; regression improves. User authorized autonomous local iterations and tolerated some classification errors.",
+  "approval_origin": "agent engineering judgment within the user-authorized local research scope; not a new user signoff on the metrics",
+  "scope": "Downloadable source and model assets authorized by the project owner; inference remains a loopback-only local research trial, not a hosted public prediction service.",
+  "model_and_policy_unchanged_after_final_evaluation": true,
+  "policy_sha256": "7d680aa0c3720288f9880097a80f660fad4ecb6feb81a0f99575dd462e5f95ee",
+  "formal_decision_sha256": "d8d028154be96309b06749857fbf654db9a20c115cddfcd7ce538d6dd6d65d85",
+  "final_results_sha256": "66e36694a52eb625bfb601c7fe249c5562cfb0a56ac35d7c46d936bb7e506101",
+  "final_reference_sha256": "556253c7bfcc60ec002c93bed1e4208083fbfe04bb21b7a21510fa95401c851c",
+  "created_utc": "2026-11-20T02:13:54.885090+00:00",
+  "human_ground_truth": false,
+  "publication_authorized_by_user": true
+}

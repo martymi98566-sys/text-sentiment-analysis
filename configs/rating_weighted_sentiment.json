@@ -1,0 +1,36 @@
+{
+  "task": "binary sentiment only; true ratings used for training loss weights; no rating prediction",
+  "seed": 42,
+  "epochs": 2,
+  "alpha": 0.5,
+  "weight_formula": "1 + alpha * (abs(rating - 5.5) - 1.5) / 3",
+  "weight_bounds": [
+    1,
+    1.5
+  ],
+  "base_model": "data/pretrained/distilbert-base-uncased",
+  "datasets": {
+    "train": {
+      "path": "data/ratings_cleaned/train.csv",
+      "sha256": "4780d3d658226b8811c70d0bc1b153f69bf89266635e0c1e2bd9aa677299ff38",
+      "rows": 22408
+    },
+    "validation": {
+      "path": "data/ratings_cleaned/val.csv",
+      "sha256": "22b7c99c5320288309865a225a3ae3adf5f5797e0ce7a19846af7f8cfdcee05e",
+      "rows": 2490
+    },
+    "test": {
+      "path": "data/ratings_cleaned/test.csv",
+      "sha256": "96b6e81fdb93474befc1e84b2b98730dc8ee3d980ad50fd4e399762e390840c0",
+      "rows": 24670
+    }
+  },
+  "output_dir": "data/rating_weighted_sentiment",
+  "selection": "Minimum unweighted validation cross-entropy, both runs fixed before test evaluation",
+  "notes": [
+    "No rating in input features or inference API.",
+    "Both new runs use same dataset, initialization, shuffle order, optimizer, 16x2 effective batch and epochs.",
+    "Historical predictions will be restricted to common original test rows with verified labels/provenance."
+  ]
+}

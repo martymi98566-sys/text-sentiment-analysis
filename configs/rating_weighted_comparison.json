@@ -1,0 +1,25 @@
+{
+  "task": "Same-comment, same-text sentiment comparison; no rating prediction",
+  "sources": {
+    "old_test": {
+      "path": "data/cleaned/test.csv",
+      "sha256": "7bd5415632704fc7224d44760862729330d3b44b4b2f7893dcba485761bff026"
+    },
+    "fixed_predictions": {
+      "path": "reports/tables/fixed_models_test_predictions.csv",
+      "sha256": "fe7347fe1bb23d59a8289f407ae69d0a4a0f7c5d882de94114e4441a411c812a"
+    },
+    "distilbert_predictions": {
+      "path": "reports/tables/distilbert_test_predictions.csv",
+      "sha256": "70780a03d4149226a50ffa4ad3dd3bbeb4213db7b78ca3486c1a401527ea5c03"
+    },
+    "voting_predictions": {
+      "path": "reports/tables/three_model_voting_test_predictions.csv",
+      "sha256": "eba750e88d8772f80f46a745025c646ccf8d419bd2efb8c4fd02a3c0adc10462"
+    }
+  },
+  "rows": 24670,
+  "text_policy": "Original data/cleaned/test.csv bytes at retained input_row; verified by input_text_sha256. New training still uses frozen cleaned rated data.",
+  "selection": "Training and model selection use train/validation only. All checkpoints fixed before test scoring.",
+  "historical_model_note": "Frozen historical predictions restricted to retained test rows; older training and checkpoint-selection histories differ. Matched plain vs weighted is the direct causal control."
+}

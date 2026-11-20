@@ -1,0 +1,33 @@
+{
+  "labels": [
+    "plot",
+    "pacing",
+    "acting",
+    "characters",
+    "dialogue",
+    "visuals",
+    "sound",
+    "emotion",
+    "theme",
+    "adaptation",
+    "other"
+  ],
+  "samples": 3048,
+  "train_samples": 2984,
+  "development_samples": 64,
+  "source_counts": {
+    "model_reviewed_evidence": 2528,
+    "synthetic_target_context_contrast": 92,
+    "explicit_verified_pair": 32,
+    "explicit_no_specific_reason": 12,
+    "reviewed_overlay": 108,
+    "synthetic_factual_or_generic_target": 10,
+    "synthetic_counterfactual_focus": 22,
+    "assistant_complete_natural_target": 248
+  },
+  "training_presentations_per_epoch": 5744,
+  "unlabeled_categories_are_unknown": true,
+  "development_scope": "64 complete naturally occurring target labels; grouped by review; not old partial or synthetic development",
+  "input_mode": "target_only",
+  "human_ground_truth": false
+}

@@ -1,0 +1,28 @@
+{
+  "category_threshold": 0.7,
+  "gate_threshold": 0.975,
+  "masked_precision": 0.8571428571428571,
+  "masked_recall": 0.18181818181818182,
+  "masked_f1": 0.3,
+  "explicit_none_false_positive_rate": 0.023809523809523808,
+  "explicit_none_samples": 42,
+  "criteria_met": true,
+  "scope": "Known-mask development agreement; absence was not converted into negative labels",
+  "labels": [
+    "plot",
+    "pacing",
+    "acting",
+    "characters",
+    "dialogue",
+    "visuals",
+    "sound",
+    "emotion",
+    "theme",
+    "adaptation",
+    "other"
+  ],
+  "input_mode": "target_only",
+  "max_length": 224,
+  "model_path": "data/reason_training/target_fragments_v3_20261120/best",
+  "human_ground_truth": false
+}

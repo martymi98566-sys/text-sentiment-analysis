@@ -1,0 +1,33 @@
+{
+  "experiment": "rating-band auxiliary supervision for binary sentiment",
+  "base_model": "data/pretrained/distilbert-base-uncased",
+  "output_dir": "data/rating_auxiliary_sentiment",
+  "seeds": [42, 43, 44],
+  "pilot_seed": 42,
+  "candidate_lambdas": [0.1, 0.2],
+  "epochs": 2,
+  "max_length": 256,
+  "batch_size": 16,
+  "gradient_accumulation": 2,
+  "learning_rate": 0.00002,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "gradient_clip": 1.0,
+  "selection": "Maximum unweighted binary validation accuracy; ties: minimum binary validation cross-entropy; then earlier epoch/smaller lambda",
+  "positive_threshold": 0.5,
+  "rating_bands": [[1, 2], [3, 4], [7, 8], [9, 10]],
+  "datasets": {
+    "train": {"path": "data/ratings_cleaned/train.csv", "sha256": "4780d3d658226b8811c70d0bc1b153f69bf89266635e0c1e2bd9aa677299ff38", "rows": 22408},
+    "validation": {"path": "data/ratings_cleaned/val.csv", "sha256": "22b7c99c5320288309865a225a3ae3adf5f5797e0ce7a19846af7f8cfdcee05e", "rows": 2490},
+    "test": {"path": "data/ratings_cleaned/test.csv", "sha256": "96b6e81fdb93474befc1e84b2b98730dc8ee3d980ad50fd4e399762e390840c0", "rows": 24670}
+  },
+  "test_protocol": "configs/rating_weighted_comparison.json",
+  "notes": [
+    "No rating feature or predicted stars at inference; real rating is an auxiliary training target only.",
+    "No sample weighting; lambda=0 matched binary control.",
+    "Pilot lambda selected using seed42 binary validation only; seeds43/44 confirm the frozen choice.",
+    "Shared initial main weights and isolated auxiliary-head initialization; no additional dropout path.",
+    "Original retained test text bytes; exploratory reused test, not an untouched final benchmark.",
+    "Do not modify historical experiments or the reason/application module."
+  ]
+}

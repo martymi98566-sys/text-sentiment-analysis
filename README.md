@@ -1,51 +1,57 @@
-# text-sentiment-analysis
+# 电影评论情绪分析与原因可视化
 
-使用 IMDB 英文影评比较传统机器学习、CNN/LSTM、DistilBERT 和模型投票。各方案的验证集、测试集指标与推理成本见 [Notebook 026](notebooks/026_project_experiment_summary.ipynb) 和[项目实验总表](reports/tables/project_experiment_summary.csv)。
+本项目基于 [IvoryGate/text-sentiment-analysis](https://github.com/IvoryGate/text-sentiment-analysis) 延续开发，保留原项目提交历史、模型对照实验与目录结构。当前版本增加本地交互网页：输入一条英文影评，展示整体积极或消极、原文情绪片段高亮，以及“原因大类 × 好坏”的加权占比。
 
-## 复现 Notebook 023
+**当前版本为研究试用版 `v0.2.0-research`。** 原因分类的新样本 F1 从 0.364 提升到 0.516，但精确率 0.727 未达到预设 0.80 门槛；正式验收仍记为未通过。参考标签来自模型复核，不能当成人工金标准确率。整体情绪预测和原因统计是两个独立板块。
 
-从包含本项目实验结果的检出开始，在仓库根目录使用 Python 3.12 安装依赖和项目。
+## 快速运行
 
-```shell
-python -m pip install -r requirements.txt
-python -m pip install -e . joblib==1.4.2
+已验证环境：Windows、Python 3.12、NVIDIA RTX 4060 Laptop 8GB，PyTorch 2.7.1 CUDA 11.8。当前推理使用 CUDA 和 BF16，暂未实现完整 CPU 路径。首次安装需下载约 12GB 模型文件，请保留至少 20GB 可用空间。
+
+```powershell
+git clone https://github.com/martymi98566-sys/text-sentiment-analysis.git
+cd text-sentiment-analysis
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe scripts/install_model_assets.py
+.\start_review_web.cmd
 ```
 
-准备[固定测试协议](configs/three_model_voting_test_protocol.json)中列出的原始文件。脚本按协议核对文件的 SHA-256，因此请保留归档文件的原始字节。
+浏览器打开 `http://127.0.0.1:8765/`。网页支持片名、单条英文评论、原文高亮、统计图、HTML 和 JSON 导出。片名由用户填写，不会自动匹配电影数据库。单条分析可能需要数分钟，任务依次执行。
 
-| 输入 | 来源 |
+模型包由安装脚本从本仓库 Release 下载；公共预训练模型从 Hugging Face 按固定提交下载，随后进行 SHA256 校验。可到 [Releases](https://github.com/martymi98566-sys/text-sentiment-analysis/releases) 手动下载训练权重 ZIP，再运行：
+
+```powershell
+.\.venv\Scripts\python.exe scripts/install_model_assets.py --trained-archive "下载的模型包路径.zip"
+.\.venv\Scripts\python.exe scripts/install_model_assets.py --verify-only
+```
+
+命令行分析：
+
+```powershell
+.\.venv\Scripts\python.exe scripts/analyze_single_review_emotions.py --movie "Example" --text "The acting is excellent, but the plot is painfully predictable."
+```
+
+## 阅读入口
+
+- [详细技术说明](docs/TECHNICAL_DESCRIPTION_ZH.md)：模型、数据、弱监督、推理、算法、接口、复现与限制。
+- [版本迭代与验证报告](docs/RELEASE_REPORT_20261120.md)：实际指标、正式验收状态、发布验证。
+- [原始项目说明](docs/UPSTREAM_README.md)：接手前的模型实验和报告入口。
+
+## 目录
+
+| 路径 | 用途 |
 | --- | --- |
-| `data/cleaned/test.csv` | Notebook 001–002 的清洗后测试集 |
-| `reports/tables/fixed_models_test_predictions.csv` | Notebook 015 导出的 B06 和 TextCNN 测试预测 |
-| `reports/tables/distilbert_test_predictions.csv` | Notebook 020 导出的 DistilBERT 测试预测 |
-| `data/models/b06_sigmoid_cv5.joblib` | Notebook 022 导出的 B06 sigmoid 校准模型 |
-| `configs/final_test_protocol.json`、`configs/distilbert_test_protocol.json` | Notebook 015、020 对应的历史测试协议 |
+| `src/sentiment_analysis/` | 原有分类模型与当前原因分析核心代码 |
+| `scripts/` | 数据、实验与应用运行工具 |
+| `configs/` | 项目配置、固定策略、模型清单与校验清单 |
+| `web/review/` | 本地网页资源 |
+| `checkpoints/` | 原项目版本化的序列模型参数 |
+| `data/` | 下载模型、必要运行元数据及本地输出；原始评论数据不随本次新增提交发布 |
+| `reports/`、`docs/` | 原项目报告、保留的已完成对照结果、版本技术文档 |
+| `notebooks/` | 原项目探索笔记；本轮废弃探索未加入 |
 
-`data/` 由 Git 忽略。把原工作区的 `data/archives/notebook_023_inputs.zip` 复制到新检出根目录之外，再从新检出的根目录解包。归档包含表中的两份 `data/` 文件，路径已包含 `data/` 前缀。
+本次新增发布不包含聊天记录、凭据配置、失败试训驱动、逐批交接材料、原始影评库或浏览器运行日志。若某个版本号模块被当前推理直接依赖，则仍作为必要运行代码保留。
 
-```shell
-python -m zipfile -e ../notebook_023_inputs.zip .
-```
-
-从仍有原始输入的 Windows 工作区重新制作归档时，在仓库根目录执行以下两条命令。
-
-```shell
-python -c "from pathlib import Path; Path('data/archives').mkdir(parents=True, exist_ok=True)"
-tar.exe -a -cf data/archives/notebook_023_inputs.zip data/cleaned/test.csv data/models/b06_sigmoid_cv5.joblib
-```
-
-如果需要重建实验输入，可沿 Notebook 001–016、019–020、021–022 的顺序生成。Notebook 019–020 的基础模型版本、CUDA BF16 和软件版本要求记录在 [DistilBERT 训练配置](configs/distilbert_finetuning.json)及对应 Notebook 中。不同环境重建的模型或 CSV 可能有不同的文件指纹，严格复现 023 使用归档输入。
-
-```shell
-python scripts/evaluate_three_model_voting.py
-```
-
-脚本与 [Notebook 023](notebooks/023_three_model_voting_test_evaluation.ipynb) 共用评估逻辑。它在 CPU 上计算 B06 的校准概率，读取已保存的 TextCNN 和 DistilBERT 预测，对齐 24,678 条测试评论，并计算硬投票、等权软投票和固定加权软投票。固定权重按 B06、TextCNN、DistilBERT 的顺序为 `0.2 / 0.3 / 0.5`，正类概率严格大于 `0.5` 时判为正类。
-
-默认把指标和逐条预测保存到 `reports/reproduced/`，也可以用 `--output-dir` 指定目录。三种投票的预期测试 F1 依次为 **91.45%**、**92.07%**、**92.25%**。Git 对固定协议、输入预测和参考 CSV 保留原始字节，脚本按 Notebook 023 的 CRLF 格式写出结果。
-
-用下面的命令逐字节比较两份复现结果与 `reports/tables/` 下的同名参考文件。
-
-```shell
-python -c "from pathlib import Path; names = ('three_model_voting_test_comparison.csv', 'three_model_voting_test_predictions.csv'); assert all(Path('reports/reproduced', name).read_bytes() == Path('reports/tables', name).read_bytes() for name in names); print('Both CSVs match byte for byte.')"
-```
+公开仓库用于下载源码和模型附件。网页程序仍在本机运行，GitHub Pages 不能直接执行本项目的 Python/GPU 推理服务。预训练模型、训练数据与上游代码的使用应遵守各自许可；公开源码不代表已获得所有数据和模型的商业授权。

@@ -1,0 +1,17 @@
+{
+  "version": "reason-contrastive-v8-20261120",
+  "active_policy": "local_contrastive_reason_v8",
+  "fallback_policy": "semantic_backfill_v2",
+  "extractor_changed": false,
+  "polarity_changed": false,
+  "intensity_changed": false,
+  "preserve_existing_supported_categories": true,
+  "new_training": true,
+  "base_source_sha256": "dd52148dc2156ed3d79ac769e3a3e756486ad3668d97e17820b9ea26392152ce",
+  "final_source_sha256": "7b4aaec427d86c11c34aa6e40e8b1f701bb80bf96a1c62b25b9c0b8b154bf86f",
+  "new_training_scope": "reason specificity gate only; first-board weights unchanged",
+  "selected_policy_sha256": "7d680aa0c3720288f9880097a80f660fad4ecb6feb81a0f99575dd462e5f95ee",
+  "router_source_sha256": "4f2de1dd4dc2ef9b3415d0b147ae1dc869514a551a7944f5c58b336bed7a7098",
+  "release_tier": "local_research_trial",
+  "formal_acceptance_passed": false
+}

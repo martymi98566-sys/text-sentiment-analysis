@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "release_tag": "v0.2.0-research",
+  "repository": "martymi98566-sys/text-sentiment-analysis",
+  "trained_archive": "trained-models-v0.2.0.zip",
+  "trained_files": {
+    "data/reason_training/repair_20261119/nli_evidence/model/config.json": {
+      "sha256": "4b05d48efece6677a1414e93a39048001dade4eed215c75bc7a6d5808b94cfa6",
+      "bytes": 1104
+    },
+    "data/reason_training/repair_20261119/nli_evidence/model/model.safetensors": {
+      "sha256": "8e3e492de92e1790c578cfd747f636f610768f81a7cd054f1dd8249e2d10a73a",
+      "bytes": 737719248
+    },
+    "data/reason_training/repair_20261119/nli_evidence/model/tokenizer.json": {
+      "sha256": "2c070ff353c36f85e20919da787a30e1e8e52b626d0e026e044f373378f6d0bf",
+      "bytes": 8339875
+    },
+    "data/reason_training/repair_20261119/nli_evidence/model/tokenizer_config.json": {
+      "sha256": "202a9ab48622ac100278f369b0e4426e173705f29c8e6f182193c7ce0c1a6301",
+      "bytes": 692
+    },
+    "data/reason_training/target_fragments_v3_20261120/best/encoder/config.json": {
+      "sha256": "ffc8bc0b32cd4b40074c17d1ef38b79a49d7c43624d6147722d8b58eecdb64f0",
+      "bytes": 1084
+    },
+    "data/reason_training/target_fragments_v3_20261120/best/encoder/model.safetensors": {
+      "sha256": "a4da625859261f9f7106999c3fba4d598ae88f97d47d09fe40954dc707f24382",
+      "bytes": 735348816
+    },
+    "data/reason_training/target_fragments_v3_20261120/best/encoder/tokenizer.json": {
+      "sha256": "2c070ff353c36f85e20919da787a30e1e8e52b626d0e026e044f373378f6d0bf",
+      "bytes": 8339875
+    },
+    "data/reason_training/target_fragments_v3_20261120/best/encoder/tokenizer_config.json": {
+      "sha256": "57a0efc071fa2a8923be350d59d69c8588c4e7907893b2239f4117ff2ea3ff3f",
+      "bytes": 494
+    },
+    "data/reason_training/target_fragments_v3_20261120/best/heads.pt": {
+      "sha256": "861a07d83ea4af66316a4502bf5f88433167fd57cb9f12cb3d3a47331e3b2402",
+      "bytes": 88957
+    },
+    "data/review_application/models/b06.joblib": {
+      "sha256": "7fa77c1769eeee13b9e5924dc1e5ef7d4a83c4d27bfebae64df9d3a2e35a9d5e",
+      "bytes": 845904
+    },
+    "data/review_application/models/distilbert/config.json": {
+      "sha256": "a1f86a36e493f760f7ed2f34f591b15c0d16fd3818a65be3e056120bd8de972b",
+      "bytes": 796
+    },
+    "data/review_application/models/distilbert/model.safetensors": {
+      "sha256": "d1f4a4dca2fd441fdb601c09c23638808680b84e28beeb747469be7949e289f1",
+      "bytes": 267832560
+    },
+    "data/review_application/models/distilbert/tokenizer.json": {
+      "sha256": "8b79639ec74b46604e730f505186eaafb1006d2fd00f2c4930d168bb7f894680",
+      "bytes": 711494
+    },
+    "data/review_application/models/distilbert/tokenizer_config.json": {
+      "sha256": "7fea6e9cd9711214d0eb2ca81e20405d945b6b61e993a925a425ecc84a46e400",
+      "bytes": 335
+    }
+  },
+  "pretrained": [
+    {
+      "directory": "data/pretrained/topic_nli",
+      "repo_id": "MoritzLaurer/deberta-v3-base-zeroshot-v2.0-c",
+      "revision": "bddf8c5411c34ac3565e16e04384fd68b2618dda",
+      "files": {
+        "config.json": {
+          "sha256": "a1c8011b852ae46d6ac26160d358fa595861d261352885f8f7bfcd2811030d9f",
+          "bytes": 1016
+        },
+        "model.safetensors": {
+          "sha256": "605e40d2020f4c66666db3e98a4bc277b6214565eac95f35c1a5027a93ee0ef0",
+          "bytes": 368871908
+        },
+        "special_tokens_map.json": {
+          "sha256": "9463f61e1b109a8eb4688b829260d7c6b1e6dff04c98ff7269bb89e2b92369b9",
+          "bytes": 286
+        },
+        "spm.model": {
+          "sha256": "c679fbf93643d19aab7ee10c0b99e460bdbc02fedf34b92b05af343b4af586fd",
+          "bytes": 2464616
+        },
+        "tokenizer.json": {
+          "sha256": "05402ffae6dd382a8491b1d29bfc139bec5d332662e86a026f433ce54c25c202",
+          "bytes": 8656646
+        },
+        "tokenizer_config.json": {
+          "sha256": "f5a1a74a632c0e9225e09a21ddf60c2e70ef5d3bfc1f261a24fd8ddab27254d2",
+          "bytes": 1256
+        }
+      }
+    },
+    {
+      "directory": "data/pretrained/topic_refiner",
+      "repo_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "files": {
+        "config.json": {
+          "sha256": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+          "bytes": 660
+        },
+        "generation_config.json": {
+          "sha256": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+          "bytes": 242
+        },
+        "merges.txt": {
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+          "bytes": 1671839
+        },
+        "model.safetensors": {
+          "sha256": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee",
+          "bytes": 3087467144
+        },
+        "tokenizer.json": {
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "bytes": 7031645
+        },
+        "tokenizer_config.json": {
+          "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+          "bytes": 7305
+        },
+        "vocab.json": {
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "bytes": 2776833
+        }
+      }
+    },
+    {
+      "directory": "data/pretrained/reason_router_3b",
+      "repo_id": "Qwen/Qwen2.5-3B-Instruct",
+      "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "files": {
+        "config.json": {
+          "sha256": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+          "bytes": 661
+        },
+        "generation_config.json": {
+          "sha256": "ea35dfb6fc5051b01114f9b995820d55dab01ed33ee490f6378b442af82c09f9",
+          "bytes": 242
+        },
+        "merges.txt": {
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+          "bytes": 1671839
+        },
+        "model-00001-of-00002.safetensors": {
+          "sha256": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+          "bytes": 3968658944
+        },
+        "model-00002-of-00002.safetensors": {
+          "sha256": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d",
+          "bytes": 2203268048
+        },
+        "model.safetensors.index.json": {
+          "sha256": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+          "bytes": 35581
+        },
+        "tokenizer.json": {
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "bytes": 7031645
+        },
+        "tokenizer_config.json": {
+          "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+          "bytes": 7305
+        },
+        "vocab.json": {
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "bytes": 2776833
+        }
+      }
+    }
+  ],
+  "trained_archive_sha256": "b015d00d8a1e0296dd25acca76f9cf0dc2909ccfc81c97daf540106fe46eedde",
+  "trained_archive_bytes": 1314695850
+}

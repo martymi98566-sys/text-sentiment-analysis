@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>映评 · 影评情绪分析</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="映评首页"><img src="/icon.svg" width="34" height="34" alt=""><span>映评<span class="brand-sub">影评情绪分析</span></span></a>
+    <div class="top-actions"><a href="#guide">使用说明</a><span class="connection" id="connection">连接本机服务中</span></div>
+  </header>
+  <main>
+    <div class="page-heading"><div><div class="eyebrow">REVIEW INSIGHTS</div><h1>看见评论里的好与坏<span class="title-dot">。</span></h1><p>从整体感受到具体原因，让一条影评更容易读懂。</p></div><span class="local-label">评论在本机分析</span></div>
+    <div class="workspace">
+      <aside class="input-panel panel">
+        <div class="panel-heading"><h2>输入一条评论</h2><span class="small-tag">英文原文</span></div>
+        <form id="review-form" novalidate>
+          <label for="movie">电影名称 <span class="optional">选填</span></label>
+          <input id="movie" name="movie" maxlength="160" autocomplete="off" placeholder="填写片名，便于识别本次结果">
+          <div class="label-row"><label for="review">评论内容</label><button class="text-button" id="clear" type="button">清空</button></div>
+          <textarea id="review" name="review" spellcheck="false" placeholder="粘贴一条英文影评，例如：&#10;&#10;The acting is convincing. The plot is full of holes. The music is beautiful." aria-describedby="input-help char-count"></textarea>
+          <div class="input-meta"><label class="file-button" for="text-file"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 13V4m-3 3 3-3 3 3M4 12v4h12v-4"/></svg>导入 TXT</label><input id="text-file" type="file" accept=".txt,text/plain" hidden><span id="char-count">0 / 12,000 字符</span></div>
+          <p class="input-help" id="input-help">当前版本支持英文评论。文件内容按一条完整评论分析。</p>
+          <div class="examples"><span>试一条示例</span><div class="example-buttons"><button type="button" data-example="mixed">好坏混合</button><button type="button" data-example="opposing">同类好坏</button><button type="button" data-example="facts">剧情叙述</button></div></div>
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+          <button class="primary-button" type="submit" id="analyze"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="m9 5 9 6-9 6z"/></svg><span>开始分析</span></button>
+          <p class="run-note">结果由现有模型和规则自动生成，无需人工逐条处理。</p>
+        </form>
+        <details class="guide" id="guide"><summary>如何阅读分析结果</summary><div><p>绿色表示积极，红色表示消极。颜色越深、字体越粗，代表估计的语气越强。</p><p>同一原因可以同时有好评和差评。占比按照已归类评价的篇幅和语气加权，未归类部分不计入分母。</p><p>未高亮不等于没有情绪。反讽、隐含表达等仍可能识别不准；语气轻重也是模型估计。</p></div></details>
+      </aside>
+      <section class="output-column" aria-label="分析结果">
+        <div id="empty-state" class="empty-state panel"><div class="empty-graphic"><svg viewBox="0 0 180 154" aria-hidden="true"><rect x="24" y="23" width="128" height="104" rx="15"/><path d="M44 47h62M44 61h89M44 75h48"/><rect class="graphic-positive" x="40" y="87" width="57" height="15" rx="4"/><rect class="graphic-negative" x="103" y="87" width="30" height="15" rx="4"/><circle cx="140" cy="121" r="25"/><path class="graphic-pie" d="M140 103v18h18"/></svg></div><h2>一条评论，几层感受</h2><p>输入评论后，在这里查看它的整体情绪、<br>原文中的情绪片段，以及具体原因的构成。</p><div class="empty-features"><span>整体情绪</span><span>原文高亮</span><span>原因占比</span></div><div class="empty-note">从左侧输入，或选一条示例开始。</div></div>
+        <div id="progress" class="progress-panel panel" role="status" aria-live="polite" hidden><div class="spinner" aria-hidden="true"></div><h2 id="progress-title">正在分析评论</h2><p id="progress-detail">正在准备本次分析，请稍候。</p><span class="elapsed" id="elapsed">已用时 0 秒</span><p class="muted">分析需要一些时间，刷新页面可恢复当前任务。</p></div>
+        <div id="result" hidden>
+          <div class="result-heading"><div><span class="eyebrow">ANALYSIS RESULT</span><h2 id="result-movie">本次分析</h2></div><span class="done-label">分析完成</span></div>
+          <div class="metrics"><div class="metric panel"><span>整体情绪</span><strong id="overall"></strong><small>独立的整体正负判断</small></div><div class="metric panel"><span>识别情绪片段</span><strong id="unit-count"></strong><small id="pending-count"></small></div><div class="metric panel"><span>原因证据覆盖</span><strong id="coverage"></strong><small>归类证据占全文词数</small></div></div>
+          <div class="panel original-panel"><div class="section-heading"><div><h3>评论原文</h3><p>先看情绪出现在哪里，再看原因构成。</p></div><div class="polarity-key"><span class="key-positive">积极</span><span class="key-negative">消极</span></div></div><div id="review-original" class="original-review" tabindex="0"></div><p class="highlight-hint">悬停或点击高亮片段，查看类型和语气。普通文字保持原样。</p><div id="warnings" class="warnings"></div></div>
+          <div class="panel composition-panel"><div class="section-heading"><div><h3>具体原因的好与坏</h3><p>已归类评价的篇幅 × 语气权重，归一化为占比。</p></div><span class="small-tag" id="type-count"></span></div><div id="chart-content" class="chart-content"><div id="donut" class="donut"></div><div id="chart-legend" class="chart-legend"></div></div><div id="no-reasons" class="no-reasons" hidden><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="13"/><path d="M12 18h12"/></svg><h4>暂未识别到具体原因</h4><p>可能是泛泛评价，也可能存在漏标。<br>不生成占比，可继续查看原文和情绪片段。</p></div><div class="table-scroll" id="reason-table-wrap"><table class="reason-table"><thead><tr><th>原因类型</th><th>好评</th><th>差评</th><th>合计</th></tr></thead><tbody id="reason-table"></tbody></table></div><p class="composition-note">语气权重：轻微 1、一般 1.5、强烈 2；共享片段在多个类型间分摊。百分比仅描述已归类部分，不是情绪概率或模型准确率。</p></div>
+          <div class="panel details-panel"><div class="section-heading"><div><h3>情绪片段明细</h3><p>每一项判断，都可以回到原文核对。</p></div><span class="small-tag" id="detail-count"></span></div><div id="unit-list"></div><p id="no-units" class="muted" hidden>没有识别到可展示的情绪片段。</p></div>
+          <div class="result-footer"><p>自动分析结果供参考，反讽与复杂表达仍可能误判。</p><div><a id="download-html" class="secondary-button" download>下载报告</a><a id="download-json" class="secondary-button" download>下载 JSON</a></div></div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer"><span>映评 · 单条影评分析</span><span>整体情绪与原因分析分别计算</span></footer>
+  </main>
+</body>
+</html>
