@@ -163,6 +163,7 @@ Qwen2.5-1.5B-Instruct 对目标片段作上下文校验，并在独立任务中�
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/install_model_assets.py --verify-only
+$env:PYTHONPATH = (Join-Path (Get-Location) 'src')
 .\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_review_web.py"
 .\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_reason_composition.py"
 ```
